@@ -46,7 +46,7 @@ export const filterProductsByCategoryThunk = id => dispatch => {
 export const filterProductsByPriceThunk = (minPrice, maxPrice) => dispatch => {
   // Display loading screen
   dispatch(setIsLoading(true));
-  // Filter by price
+  // Get products and filter by price
   axios
     .get('https://e-commerce-api-v2.academlo.tech/api/v1/products')
     .then(res => {

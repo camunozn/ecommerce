@@ -75,7 +75,7 @@ const SideBar = () => {
       {/* CATEGORY FILTER */}
       <div className="filter-category accordion-item mb-3 rounded-0">
         <div className="">
-          <h3 className="category-header accordion-header"></h3>
+          <h3 className="category-header accordion-header border-top"></h3>
           <button
             type="button"
             className={`accordion-button rounded-0 ${openCategoryFilter ? '' : 'collapsed'}`}

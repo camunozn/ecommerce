@@ -1,33 +1,41 @@
 import React from 'react';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const ProductsList = () => {
   const products = useSelector(state => state.products);
+  const navigate = useNavigate();
 
   return (
-    <div className="products-list">
-      <Row xs={1} md={3} className="g-3">
+    <div className="products-list mb-5">
+      <div className="row row-cols-1 row-cols-md-3 g-4">
         {products.map(product => (
-          <Col key={product.id}>
-            <Card className="h-100">
-              <Card.Header className="bg-transparent h-50">
-                <Card.Img
-                  className="mh-100 mw-100 p-3"
+          <div key={product.id} className="col">
+            <div
+              role="button"
+              className="card h-100"
+              style={{ maxHeight: '30rem' }}
+              onClick={() => navigate(`/products/${product.id}`)}
+            >
+              <div className="card-header d-flex align-items-center bg-transparent h-50 w-100">
+                <img
                   src={product.images[0].url}
+                  className="mh-100 mw-100 d-block mx-auto p-4"
+                  alt="Product image"
                 />
-              </Card.Header>
-              <Card.Body>
-                <Card.Subtitle className="mb-1">{product.brand}</Card.Subtitle>
-                <Card.Title className="fs-6 mb-4">{product.title}</Card.Title>
-                <Card.Subtitle className="mb-1">Price</Card.Subtitle>
-                <Card.Text>{product.price}</Card.Text>
-                <Button variant="primary">Add to cart</Button>
-              </Card.Body>
-            </Card>
-          </Col>
+              </div>
+              <div className="card-body d-flex flex-column justify-content-between">
+                <h5 className="card-title">{product.brand}</h5>
+                <p className="card-text">{product.title}</p>
+                <h5 className="card-subtitle">Price</h5>
+                <p className="card-text">{`$${product.price}`}</p>
+                <button className="btn btn-primary btn-sm w-50 ms-auto">Add to cart</button>
+              </div>
+            </div>
+          </div>
         ))}
-      </Row>
+      </div>
     </div>
   );
 };
