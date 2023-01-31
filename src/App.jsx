@@ -1,7 +1,6 @@
 import './App.css';
-import { useState } from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import AppNavBar from './assets/components/AppNavBar';
 import LoadingScreen from './assets/components/LoadingScreen';
 import Home from './assets/pages/Home';

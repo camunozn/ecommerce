@@ -5,19 +5,30 @@ import { getProductsThunk } from '../../store/slices/products.slice';
 import SideBar from '../components/SideBar';
 import SearchBar from '../components/SearchBar';
 import ProductsList from '../components/ProductsList';
+import { Col, Row, Container } from 'react-bootstrap';
+import { getCategoriesThunk } from '../../store/slices/categories.slice';
 
 const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProductsThunk());
+    dispatch(getCategoriesThunk());
   }, []);
 
   return (
     <div className="home">
-      <SideBar />
-      <SearchBar />
-      <ProductsList />
+      <Container fluid>
+        <Row>
+          <Col>
+            <SideBar />
+          </Col>
+          <Col xs={8} md={9}>
+            <SearchBar />
+            <ProductsList />
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };
