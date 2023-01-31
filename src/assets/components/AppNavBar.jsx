@@ -7,7 +7,9 @@ const AppNavBar = () => {
     <div className="nav-bar">
       <Navbar expand="lg" className="bg-light mb-5">
         <Container fluid>
-          <Navbar.Brand href="/">My Store</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">
+            My Store
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
