@@ -1,19 +1,31 @@
 import React from 'react';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { filterProductByNameThunk } from '../../store/slices/products.slice';
 
 const SearchBar = () => {
+  const [productSearch, setProductSearch] = useState('');
+
+  const dispatch = useDispatch();
+
   return (
     <div className="search-bar">
-      <form action="" className="d-flex mb-3">
+      <div className="search-input input-group mb-3">
         <input
+          className="form-control"
           type="search"
-          className="form-control me-2"
           placeholder="Search products"
-          aria-label="Search"
+          value={productSearch}
+          onChange={e => setProductSearch(e.target.value)}
         />
-        <button type="submit" className="btn btn-primary">
+        <button
+          className="btn btn-primary"
+          type="button"
+          onClick={() => dispatch(filterProductByNameThunk(productSearch))}
+        >
           Search
         </button>
-      </form>
+      </div>
     </div>
   );
 };

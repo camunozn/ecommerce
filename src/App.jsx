@@ -7,7 +7,7 @@ import Home from './assets/pages/Home';
 import Login from './assets/pages/Login';
 import Signup from './assets/pages/Signup';
 import ProductDetail from './assets/pages/ProductDetail';
-import ProtectedRoutes from './assets/pages/ProtectedRoutes';
+import ProtectedRoutes from './assets/components/ProtectedRoutes';
 import User from './assets/pages/User';
 import Purchases from './assets/pages/Purchases';
 
