@@ -1,16 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  Button,
-  ButtonGroup,
-  Col,
-  Collapse,
-  Container,
-  Form,
-  Nav,
-  Row,
-} from 'react-bootstrap';
 import { filterProductsByCategoryThunk } from '../../store/slices/products.slice';
 
 const SideBar = () => {
