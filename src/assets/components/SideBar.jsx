@@ -1,13 +1,19 @@
 import React from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterProductsByCategoryThunk } from '../../store/slices/products.slice';
+import {
+  filterProductsByCategoryThunk,
+  filterProductsByPriceThunk,
+} from '../../store/slices/products.slice';
 
 const SideBar = () => {
+  const products = useSelector(state => state.products);
   const categories = useSelector(state => state.categories);
   const [openPriceFilter, setOpenPriceFilter] = useState(true);
   const [openCategoryFilter, setOpenCategoryFilter] = useState(true);
   const [activeCategoryFilter, setActiveCategoryFilter] = useState('');
+  const [maxPriceFilter, setMaxPriceFilter] = useState(0);
+  const [minPriceFilter, setMinPriceFilter] = useState(0);
 
   const dispatch = useDispatch();
 
@@ -28,18 +34,42 @@ const SideBar = () => {
         <div className={`price-body accordion-collapse collapse ${openPriceFilter ? 'show' : ''}`}>
           <div className="accordion-body">
             <div className="input-group input-group-sm mb-3">
-              <label htmlFor="fromPrice" className="form-label w-25 me-2">
+              <label htmlFor="fromPrice" className="form-label w-25 me-1 mb-0">
                 From:
               </label>
-              <input type="number" className="form-control" id="fromPrice" />
+              <input
+                type="number"
+                className="form-control"
+                id="fromPrice"
+                value={minPriceFilter}
+                onChange={e => setMinPriceFilter(e.target.value)}
+              />
             </div>
             <div className="input-group input-group-sm mb-3">
-              <label htmlFor="toPrice" className="form-label w-25 me-2">
+              <label htmlFor="toPrice" className="form-label w-25 me-1 mb-0">
                 To:
               </label>
-              <input type="number" className="form-control" id="toPrice" />
+              <input
+                type="number"
+                className="form-control"
+                id="toPrice"
+                value={maxPriceFilter}
+                onChange={e => setMaxPriceFilter(e.target.value)}
+              />
             </div>
-            <button className="btn btn-primary btn-sm ms-auto" type="button">
+            <button
+              type="button"
+              className="btn btn-primary btn-sm ms-auto"
+              onClick={() =>
+                dispatch(
+                  filterProductsByPriceThunk(
+                    products,
+                    parseFloat(minPriceFilter),
+                    parseFloat(maxPriceFilter)
+                  )
+                )
+              }
+            >
               Filter price
             </button>
           </div>

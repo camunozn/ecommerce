@@ -28,9 +28,7 @@ export const filterProductByNameThunk = searchedValue => dispatch => {
   dispatch(setIsLoading(true));
   // Filter by product title
   return axios
-    .get(
-      `https://e-commerce-api-v2.academlo.tech/api/v1/products/?title=${searchedValue}`
-    )
+    .get(`https://e-commerce-api-v2.academlo.tech/api/v1/products/?title=${searchedValue}`)
     .then(res => dispatch(setProducts(res.data)))
     .finally(() => dispatch(setIsLoading(false)));
 };
@@ -40,10 +38,24 @@ export const filterProductsByCategoryThunk = id => dispatch => {
   dispatch(setIsLoading(true));
   // Filter by category ID
   return axios
-    .get(
-      `https://e-commerce-api-v2.academlo.tech/api/v1/products/?categoryId=${id}`
-    )
+    .get(`https://e-commerce-api-v2.academlo.tech/api/v1/products/?categoryId=${id}`)
     .then(res => dispatch(setProducts(res.data)))
+    .finally(() => dispatch(setIsLoading(false)));
+};
+
+export const filterProductsByPriceThunk = (products, minPrice, maxPrice) => dispatch => {
+  // Display loading screen
+  dispatch(setIsLoading(true));
+  // Filter by price
+  axios
+    .get('https://e-commerce-api-v2.academlo.tech/api/v1/products')
+    .then(res => {
+      const data = res.data;
+      const filteredData = data.filter(
+        product => product.price >= minPrice && product.price <= maxPrice
+      );
+      dispatch(setProducts(filteredData));
+    })
     .finally(() => dispatch(setIsLoading(false)));
 };
 
