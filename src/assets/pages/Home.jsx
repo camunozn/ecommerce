@@ -23,7 +23,7 @@ const Home = () => {
           <Col>
             <SideBar />
           </Col>
-          <Col xs={8} md={9}>
+          <Col xs={6} md={9}>
             <SearchBar />
             <ProductsList />
           </Col>
