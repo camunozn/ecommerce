@@ -43,7 +43,7 @@ export const filterProductsByCategoryThunk = id => dispatch => {
     .finally(() => dispatch(setIsLoading(false)));
 };
 
-export const filterProductsByPriceThunk = (products, minPrice, maxPrice) => dispatch => {
+export const filterProductsByPriceThunk = (minPrice, maxPrice) => dispatch => {
   // Display loading screen
   dispatch(setIsLoading(true));
   // Filter by price

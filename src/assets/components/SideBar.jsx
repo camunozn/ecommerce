@@ -62,11 +62,7 @@ const SideBar = () => {
               className="btn btn-primary btn-sm ms-auto"
               onClick={() =>
                 dispatch(
-                  filterProductsByPriceThunk(
-                    products,
-                    parseFloat(minPriceFilter),
-                    parseFloat(maxPriceFilter)
-                  )
+                  filterProductsByPriceThunk(parseFloat(minPriceFilter), parseFloat(maxPriceFilter))
                 )
               }
             >
