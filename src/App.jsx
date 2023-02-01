@@ -10,12 +10,14 @@ import ProductDetail from './assets/pages/ProductDetail';
 import ProtectedRoutes from './assets/components/ProtectedRoutes';
 import User from './assets/pages/User';
 import Purchases from './assets/pages/Purchases';
+import ScrollToTop from './assets/components/ScrollToTop';
 
 function App() {
   const isLoading = useSelector(state => state.isLoading);
 
   return (
     <HashRouter>
+      <ScrollToTop />
       <div className="App">
         <AppNavBar />
         {isLoading && <LoadingScreen />}

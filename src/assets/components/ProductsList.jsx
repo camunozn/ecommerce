@@ -3,13 +3,13 @@ import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-const ProductsList = () => {
+const ProductsList = ({ rows, gap }) => {
   const products = useSelector(state => state.products);
   const navigate = useNavigate();
 
   return (
     <div className="products-list mb-5">
-      <div className="row row-cols-1 row-cols-md-3 g-4">
+      <div className={`row row-cols-1 row-cols-md-${rows} g-${gap}`}>
         {products.map(product => (
           <div key={product.id} className="col">
             <div
