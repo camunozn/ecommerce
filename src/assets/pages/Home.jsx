@@ -25,7 +25,7 @@ const Home = () => {
           </Col>
           <Col xs={6} md={9}>
             <SearchBar />
-            <ProductsList rows={3} gap={4} />
+            <ProductsList />
           </Col>
         </Row>
       </Container>

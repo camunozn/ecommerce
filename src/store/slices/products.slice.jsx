@@ -33,15 +33,20 @@ export const filterProductByNameThunk = searchedValue => dispatch => {
     .finally(() => dispatch(setIsLoading(false)));
 };
 
-export const filterProductsByCategoryThunk = id => dispatch => {
-  // Display loading screen
-  dispatch(setIsLoading(true));
-  // Filter by category ID
-  return axios
-    .get(`https://e-commerce-api-v2.academlo.tech/api/v1/products/?categoryId=${id}`)
-    .then(res => dispatch(setProducts(res.data)))
-    .finally(() => dispatch(setIsLoading(false)));
-};
+export const filterProductsByCategoryThunk =
+  (id, selfId = undefined) =>
+  dispatch => {
+    // Display loading screen
+    dispatch(setIsLoading(true));
+    // Filter by category ID
+    return axios
+      .get(`https://e-commerce-api-v2.academlo.tech/api/v1/products/?categoryId=${id}`)
+      .then(res => {
+        const data = res.data;
+        dispatch(setProducts(selfId ? data.filter(el => el.id !== parseInt(selfId)) : data));
+      })
+      .finally(() => dispatch(setIsLoading(false)));
+  };
 
 export const filterProductsByPriceThunk = (minPrice, maxPrice) => dispatch => {
   // Display loading screen
