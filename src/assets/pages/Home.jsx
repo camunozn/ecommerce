@@ -5,7 +5,6 @@ import { getProductsThunk } from '../../store/slices/products.slice';
 import SideBar from '../components/SideBar';
 import SearchBar from '../components/SearchBar';
 import ProductsList from '../components/ProductsList';
-import { Col, Row, Container } from 'react-bootstrap';
 import { getCategoriesThunk } from '../../store/slices/categories.slice';
 
 const Home = () => {
@@ -17,18 +16,16 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="home">
-      <Container fluid>
-        <Row>
-          <Col>
-            <SideBar />
-          </Col>
-          <Col xs={6} md={9}>
-            <SearchBar />
-            <ProductsList />
-          </Col>
-        </Row>
-      </Container>
+    <div className="home container-fluid">
+      <div className="row ">
+        <div className="col-12 col-sm-6 col-md-4 col-lg-3">
+          <SideBar />
+        </div>
+        <div className="col-12 col-sm-6 col-md-8 col-lg-9">
+          <SearchBar />
+          <ProductsList />
+        </div>
+      </div>
     </div>
   );
 };
