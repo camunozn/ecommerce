@@ -2,10 +2,10 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getProductsThunk } from '../../store/slices/products.slice';
+import { getCategoriesThunk } from '../../store/slices/categories.slice';
 import SideBar from '../components/SideBar';
 import SearchBar from '../components/SearchBar';
 import ProductsList from '../components/ProductsList';
-import { getCategoriesThunk } from '../../store/slices/categories.slice';
 
 const Home = () => {
   const dispatch = useDispatch();
