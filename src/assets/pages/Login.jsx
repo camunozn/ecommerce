@@ -1,11 +1,15 @@
 import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { setAlertData } from '../../store/slices/alertData.slice';
+import { setShowAlert } from '../../store/slices/showAlert.slice';
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const submit = data => {
@@ -15,9 +19,19 @@ const Login = () => {
         localStorage.setItem('token', res.data.token);
         navigate('/user');
       })
-      .catch(err =>
-        err.response.status === 401 ? alert('Wrong email or password') : console.log(err)
-      );
+      .catch(err => {
+        if (err.response.status === 401) {
+          dispatch(
+            setAlertData({
+              alertType: 'error',
+              alertMessage: 'Wrong email or password. Try again.',
+            })
+          );
+          dispatch(setShowAlert(true));
+        } else {
+          console.error(err);
+        }
+      });
   };
 
   return (
@@ -36,8 +50,12 @@ const Login = () => {
           <div className="card text-center border-primary mb-4 mx-auto w-75">
             <div className="card-header fs-6">Test data</div>
             <div className="card-body">
-              <div className="card-text fs-6">camunozn89@gmail.com</div>
-              <div className="card-text fs-6">user1234</div>
+              <div className="card-text fs-6">
+                <small>camunozn89@gmail.com</small>
+              </div>
+              <div className="card-text fs-6">
+                <small>user1234</small>
+              </div>
             </div>
           </div>
           <div className="mb-3">

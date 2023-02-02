@@ -11,9 +11,11 @@ import ProtectedRoutes from './assets/components/ProtectedRoutes';
 import User from './assets/pages/User';
 import Purchases from './assets/pages/Purchases';
 import ScrollToTop from './assets/components/ScrollToTop';
+import AlertModal from './assets/components/AlertModal';
 
 function App() {
   const isLoading = useSelector(state => state.isLoading);
+  const showAlert = useSelector(state => state.showAlert);
 
   return (
     <HashRouter>
@@ -21,6 +23,7 @@ function App() {
       <div className="App">
         <AppNavBar />
         {isLoading && <LoadingScreen />}
+        {showAlert && <AlertModal />}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />

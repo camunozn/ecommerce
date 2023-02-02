@@ -11,6 +11,14 @@
   z-index: 100;
 }
 
+.alert--success {
+  color: lightgreen;
+}
+
+.alert--error {
+  color: lightcoral;
+}
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
