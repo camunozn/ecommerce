@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { filterProductsByCategoryThunk } from '../../store/slices/products.slice';
 import ImgCarousel from '../components/ImgCarousel';
-import ProductShowcase from '../components/ProductShowcase';
+import ProductDetailCard from '../components/ProductDetailCard';
 import ProductsList from '../components/ProductsList';
 
 const ProductDetail = () => {
@@ -32,7 +32,7 @@ const ProductDetail = () => {
         </div>
         {/* PRODUCT DETAILS */}
         <div className="col">
-          <ProductShowcase product={product} />
+          <ProductDetailCard product={product} />
         </div>
       </div>
       <div className="row px-5">

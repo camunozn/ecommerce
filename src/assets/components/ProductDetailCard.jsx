@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ProductShowcase = ({ product }) => {
+const ProductDetailCard = ({ product }) => {
   const [productQty, setProductQyt] = useState(1);
 
   return (
@@ -52,4 +52,4 @@ const ProductShowcase = ({ product }) => {
   );
 };
 
-export default ProductShowcase;
+export default ProductDetailCard;
