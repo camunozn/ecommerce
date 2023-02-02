@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const AppNavBar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
+  const token = localStorage.getItem('token');
 
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -12,11 +13,12 @@ const AppNavBar = () => {
     <div className="nav-bar mb-5">
       <nav className="navbar navbar-expand-lg bg-primary bg-gradient bg-opacity-10">
         <div className="container-fluid px-3">
-          <a className="navbar-brand py-2 me-4" href="/">
-            My Store
+          <a className="navbar-brand py-2 mx-4" href="/">
+            <i className="fa-solid fa-rocket"></i>
+            <span className="text-uppercase mx-2">Rocket Store</span>
           </a>
           <button
-            className="navbar-toggler"
+            className="navbar-toggler border-0"
             type="button"
             data-bs-toggle="collapse"
             onClick={() => setShowNavbar(!showNavbar)}
@@ -37,19 +39,13 @@ const AppNavBar = () => {
                 </a>
               </li>
             </ul>
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <a
-                  className={`nav-link ${pathname === '/login' ? 'active' : ''}`}
-                  role="button"
-                  onClick={() => {
-                    navigate('/login');
-                  }}
-                >
-                  Login
+            <ul className={`navbar-nav ${token ? '' : 'd-none'}`}>
+              <li className="nav-item mx-4">
+                <a className="nav-link" role="button">
+                  <i className="fa-solid fa-cart-shopping"></i>
                 </a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item mx-4">
                 <a
                   className={`nav-link ${pathname === '/purchases' ? 'active' : ''}`}
                   role="button"
@@ -57,12 +53,32 @@ const AppNavBar = () => {
                     navigate('/purchases');
                   }}
                 >
-                  Purchases
+                  <i className="fa-solid fa-box-archive"></i>
                 </a>
               </li>
+              <li className="nav-item mx-4">
+                <a
+                  className={`nav-link ${pathname === '/user' ? 'active' : ''}`}
+                  role="button"
+                  onClick={() => {
+                    navigate('/user');
+                  }}
+                >
+                  <i className="fa-solid fa-user"></i>
+                </a>
+              </li>
+            </ul>
+            <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link" role="button">
-                  Shopping Cart
+                <a
+                  className={`nav-link ${pathname === '/login' ? 'active' : ''}`}
+                  role="button"
+                  onClick={() => {
+                    if (token) localStorage.setItem('token', '');
+                    navigate('/login');
+                  }}
+                >
+                  {token ? 'Logout' : 'Login'}
                 </a>
               </li>
             </ul>

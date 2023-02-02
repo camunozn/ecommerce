@@ -33,6 +33,13 @@ const Login = () => {
               continue:
             </h3>
           </div>
+          <div className="card text-center border-primary mb-5 mx-auto w-75">
+            <div className="card-header fs-6">Test data</div>
+            <div className="card-body">
+              <div className="card-text fs-6">john@gmail.com</div>
+              <div className="card-text fs-6">john1234</div>
+            </div>
+          </div>
           <div className="mb-3">
             <label htmlFor="inputEmail" className="form-label">
               Email address
