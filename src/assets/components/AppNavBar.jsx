@@ -39,13 +39,13 @@ const AppNavBar = () => {
                 </a>
               </li>
             </ul>
-            <ul className={`navbar-nav ${token ? '' : 'd-none'}`}>
-              <li className="nav-item mx-4">
+            <ul className={`navbar-nav d-flex ${token ? '' : 'd-none'}`}>
+              <li className="nav-item me-4">
                 <a className="nav-link" role="button">
-                  <i className="fa-solid fa-cart-shopping"></i>
+                  {showNavbar ? 'My cart' : <i className="fa-solid fa-cart-shopping"></i>}
                 </a>
               </li>
-              <li className="nav-item mx-4">
+              <li className="nav-item me-4">
                 <a
                   className={`nav-link ${pathname === '/purchases' ? 'active' : ''}`}
                   role="button"
@@ -53,10 +53,10 @@ const AppNavBar = () => {
                     navigate('/purchases');
                   }}
                 >
-                  <i className="fa-solid fa-box-archive"></i>
+                  {showNavbar ? 'My purchases' : <i className="fa-solid fa-box-archive"></i>}
                 </a>
               </li>
-              <li className="nav-item mx-4">
+              <li className="nav-item me-4">
                 <a
                   className={`nav-link ${pathname === '/user' ? 'active' : ''}`}
                   role="button"
@@ -64,7 +64,7 @@ const AppNavBar = () => {
                     navigate('/user');
                   }}
                 >
-                  <i className="fa-solid fa-user"></i>
+                  {showNavbar ? 'My account' : <i className="fa-solid fa-user"></i>}
                 </a>
               </li>
             </ul>

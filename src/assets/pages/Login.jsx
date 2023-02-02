@@ -21,7 +21,7 @@ const Login = () => {
   };
 
   return (
-    <div className="login d-flex" style={{ height: '75vh' }}>
+    <div className="login d-flex mb-5">
       <form
         className="card col-9 col-sm-6 col-md-5 col-lg-4 col-xl-3 m-auto"
         onSubmit={handleSubmit(submit)}
@@ -33,11 +33,11 @@ const Login = () => {
               continue:
             </h3>
           </div>
-          <div className="card text-center border-primary mb-5 mx-auto w-75">
+          <div className="card text-center border-primary mb-4 mx-auto w-75">
             <div className="card-header fs-6">Test data</div>
             <div className="card-body">
-              <div className="card-text fs-6">john@gmail.com</div>
-              <div className="card-text fs-6">john1234</div>
+              <div className="card-text fs-6">camunozn89@gmail.com</div>
+              <div className="card-text fs-6">user1234</div>
             </div>
           </div>
           <div className="mb-3">
@@ -61,12 +61,12 @@ const Login = () => {
             Login
           </button>
           <div className="px-1">
-            <p style={{ fontSize: '0.7rem' }}>
+            <small>
               Don't have an account?{' '}
               <span className="text-primary" role="button" onClick={() => navigate('/signup')}>
                 Sign up
               </span>
-            </p>
+            </small>
           </div>
         </div>
       </form>

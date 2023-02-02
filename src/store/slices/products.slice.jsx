@@ -17,7 +17,7 @@ export const getProductsThunk = () => dispatch => {
   // Diplay loading screen
   dispatch(setIsLoading(true));
   // Get products data
-  axios
+  return axios
     .get('https://e-commerce-api-v2.academlo.tech/api/v1/products')
     .then(res => dispatch(setProducts(res.data)))
     .finally(() => dispatch(setIsLoading(false)));

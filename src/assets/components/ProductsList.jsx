@@ -6,6 +6,10 @@ const ProductsList = () => {
   const products = useSelector(state => state.products);
   const navigate = useNavigate();
 
+  const addToCart = () => {
+    alert('added to cart');
+  };
+
   return (
     <div className="products-list mb-5">
       <div className={`row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4`}>
@@ -36,7 +40,13 @@ const ProductsList = () => {
                   <h5 className="card-subtitle fs-6 text-muted">Price</h5>
                   <p className="card-text fs-6">{`$${product.price}`}</p>
                 </div>
-                <button className="btn btn-primary btn-sm w-50 ms-auto">Add to cart</button>
+                <button
+                  type="button"
+                  className="btn btn-primary btn-sm w-50 ms-auto"
+                  onClick={addToCart}
+                >
+                  Add to cart
+                </button>
               </div>
             </div>
           </div>
