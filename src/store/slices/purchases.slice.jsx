@@ -4,6 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { setIsLoading } from './isLoading.slice';
 import { setAlertData } from './alertData.slice';
 import { setShowAlert } from './showAlert.slice';
+import { getCartThunk } from './cart.slice';
 
 export const purchasesSlice = createSlice({
   name: 'purchases',
@@ -33,6 +34,7 @@ export const addPurchaseThunk = () => dispatch => {
     .post('https://e-commerce-api-v2.academlo.tech/api/v1/purchases', [], getConfig())
     .then(res => {
       dispatch(setPurchases(res.data));
+      dispatch(getCartThunk());
       dispatch(setAlertData({ alertType: 'success', alertMessage: 'Checkout completed!' }));
       dispatch(setShowAlert(true));
     })

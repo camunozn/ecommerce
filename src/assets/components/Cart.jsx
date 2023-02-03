@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { getCartThunk } from '../../store/slices/cart.slice';
 import { addPurchaseThunk } from '../../store/slices/purchases.slice';
 import { setShowCart } from '../../store/slices/showCart.slice';
 import ProductCartCard from './ProductCartCard';
@@ -10,6 +11,10 @@ const Cart = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(getCartThunk());
+  }, [cart]);
 
   const calcCartTotal = cart => {
     let sum = 0;

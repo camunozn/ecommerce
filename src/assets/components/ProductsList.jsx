@@ -5,6 +5,7 @@ import { addToCartThunk } from '../../store/slices/cart.slice';
 import { setShowCart } from '../../store/slices/showCart.slice';
 
 const ProductsList = () => {
+  const token = localStorage.getItem('token');
   const products = useSelector(state => state.products);
 
   const dispatch = useDispatch();
@@ -56,9 +57,11 @@ const ProductsList = () => {
                   className="btn btn-primary btn-sm w-50 ms-auto"
                   onClick={() => {
                     dispatch(addToCartThunk({ productId: product.id, quantity: 1 }));
-                    setTimeout(() => {
-                      dispatch(setShowCart(true));
-                    }, 2500);
+                    if (token) {
+                      setTimeout(() => {
+                        dispatch(setShowCart(true));
+                      }, 2500);
+                    }
                   }}
                 >
                   Add to cart

@@ -13,8 +13,8 @@ const AppNavBar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="nav-bar mb-5">
-      <nav className="navbar navbar-expand-lg bg-primary bg-gradient bg-opacity-10">
+    <div className="nav-bar sticky-top shadow-sm mb-5">
+      <nav className="navbar navbar-dark navbar-expand-lg bg-primary bg-gradient">
         <div className="container-fluid px-3">
           <a className="navbar-brand py-2 mx-4" href="/">
             <i className="fa-solid fa-rocket"></i>
@@ -26,7 +26,7 @@ const AppNavBar = () => {
             data-bs-toggle="collapse"
             onClick={() => setShowNavbar(!showNavbar)}
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon "></span>
           </button>
           <div className={`collapse navbar-collapse ${showNavbar ? 'show' : ''}`}>
             <ul className="navbar-nav me-auto">

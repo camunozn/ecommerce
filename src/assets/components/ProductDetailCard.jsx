@@ -4,6 +4,7 @@ import { addToCartThunk } from '../../store/slices/cart.slice';
 import { setShowCart } from '../../store/slices/showCart.slice';
 
 const ProductDetailCard = ({ product }) => {
+  const token = localStorage.getItem('token');
   const [productQty, setProductQyt] = useState(1);
 
   const dispatch = useDispatch();
@@ -54,9 +55,11 @@ const ProductDetailCard = ({ product }) => {
           className="btn btn-primary w-100"
           onClick={() => {
             dispatch(addToCartThunk({ productId: product?.id, quantity: productQty }));
-            setTimeout(() => {
-              dispatch(setShowCart(true));
-            }, 2500);
+            if (token) {
+              setTimeout(() => {
+                dispatch(setShowCart(true));
+              }, 2500);
+            }
           }}
         >
           Add to cart
