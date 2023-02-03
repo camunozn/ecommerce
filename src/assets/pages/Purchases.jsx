@@ -22,7 +22,7 @@ const Purchases = () => {
             key={purchase?.id}
             role="button"
             className="card mb-3"
-            onClick={() => navigate(`/products/${product.id}`)}
+            onClick={() => navigate(`/products/${purchase.product?.id}`)}
           >
             <div className="row g-0">
               <div className="col-4 col-md-2 text-center d-flex flex-column justify-content-center">
