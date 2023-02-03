@@ -20,11 +20,11 @@ const ImgCarousel = ({ product }) => {
           <div className="carousel-inner h-100">
             {product.images?.map((image, i) => (
               <div
-                key={image.id}
+                key={image?.id}
                 className={`carousel-item h-100 ${i === imgIndex ? 'active d-flex h-100' : ''}`}
               >
                 <img
-                  src={image.url}
+                  src={image?.url}
                   className="d-block p-5 m-auto"
                   alt=""
                   style={{ maxHeight: 400, maxWidth: '80%' }}
@@ -59,13 +59,13 @@ const ImgCarousel = ({ product }) => {
         <div className="carousel-indicators m-0 position-relative">
           {product.images?.map((image, i) => (
             <button
-              key={image.id}
+              key={image?.id}
               type="button"
               style={{ height: '4rem', width: '4rem' }}
               className={`${i === imgIndex ? 'active' : ''} btn btn-outline-light mx-1`}
               onClick={() => handleSelect(i)}
             >
-              <img src={image.url} className="mh-100 mw-100" alt="" />
+              <img src={image?.url} className="mh-100 mw-100" alt="" />
             </button>
           ))}
         </div>

@@ -18,14 +18,14 @@ const User = () => {
           <i className="fa-solid fa-circle-user"></i>
         </div>
         <div className="card-body">
-          <h5 className="card-title text-center mb-4">{`${loggedUser.firstName} ${loggedUser.lastName}`}</h5>
+          <h5 className="card-title text-center mb-4">{`${loggedUser?.firstName} ${loggedUser?.lastName}`}</h5>
           <p className="card-text">
             <span className="text-muted">Email: </span>
-            {loggedUser.email}
+            {loggedUser?.email}
           </p>
           <p className="card-text">
             <span className="text-muted">Phone: </span>
-            {loggedUser.phone}
+            {loggedUser?.phone}
           </p>
         </div>
       </div>
