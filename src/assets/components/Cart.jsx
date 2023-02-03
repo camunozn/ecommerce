@@ -1,6 +1,7 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { addPurchaseThunk } from '../../store/slices/purchases.slice';
 import { setShowCart } from '../../store/slices/showCart.slice';
 import ProductCartCard from './ProductCartCard';
 
@@ -8,6 +9,7 @@ const Cart = () => {
   const cart = useSelector(state => state.cart);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const calcCartTotal = cart => {
     let sum = 0;
@@ -48,7 +50,15 @@ const Cart = () => {
             <h5 className="text-muted fs-6">Total:</h5>
             <b>{`$ ${cartTotal}`}</b>
           </div>
-          <button type="button" className="btn btn-primary w-100">
+          <button
+            type="button"
+            className="btn btn-primary w-100"
+            onClick={() => {
+              dispatch(setShowCart(false));
+              dispatch(addPurchaseThunk());
+              navigate('/purchases');
+            }}
+          >
             Checkout
           </button>
         </div>
