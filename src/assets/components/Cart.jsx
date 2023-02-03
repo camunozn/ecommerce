@@ -28,7 +28,9 @@ const Cart = () => {
 
   return (
     <div className="cart">
-      <div className="offcanvas-backdrop fade show"></div>
+      <div className="offcanvas-backdrop fade show"
+        onClick={() => dispatch(setShowCart(false))}
+        ></div>
       <div className="offcanvas offcanvas-end show">
         <div className="offcanvas-header">
           <h5 className="offcanvas-title">Shopping Cart</h5>
