@@ -17,7 +17,7 @@ const ProductCartCard = ({ itemId, product, quantity }) => {
       <div className="row rounded-2 border p-3 m-2 mb-4">
         <div className="col-3 px-0">
           <img
-            src={product.images[2].url}
+            src={product.images[0].url}
             alt="Product image"
             className=""
             style={{ maxHeight: 60, maxWidth: 60 }}
@@ -75,6 +75,7 @@ const ProductCartCard = ({ itemId, product, quantity }) => {
               </div>
               <div className="col text-end my-auto">
                 <button
+                  type="button"
                   className="btn btn-outline-danger border-0"
                   onClick={() => dispatch(deleteFromCartThunk(itemId))}
                 >

@@ -21,7 +21,10 @@ const SearchBar = () => {
         <button
           className="btn btn-primary"
           type="button"
-          onClick={() => dispatch(filterProductByNameThunk(productSearch))}
+          onClick={() => {
+            dispatch(filterProductByNameThunk(productSearch));
+            setProductSearch('');
+          }}
         >
           Search
         </button>
