@@ -14,7 +14,7 @@ const Cart = () => {
 
   useEffect(() => {
     dispatch(getCartThunk());
-  }, [cart]);
+  }, []);
 
   const calcCartTotal = cart => {
     let sum = 0;
