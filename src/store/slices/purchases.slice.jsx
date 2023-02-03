@@ -24,7 +24,11 @@ export const getPurchasesThunk = () => dispatch => {
   return axios
     .get('https://e-commerce-api-v2.academlo.tech/api/v1/purchases', getConfig())
     .then(res => dispatch(setPurchases(res.data)))
-    .catch(err => console.error(err))
+    .catch(err => {
+      dispatch(setAlertData({ alertType: 'error', alertMessage: err.message }));
+      dispatch(setShowAlert(true));
+      console.error(err);
+    })
     .finally(() => dispatch(setIsLoading(false)));
 };
 
