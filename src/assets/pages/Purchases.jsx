@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { getPurchasesThunk } from '../../store/slices/purchases.slice';
 
 const Purchases = () => {
   const purchases = useSelector(state => state.purchases);
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getPurchasesThunk());
@@ -15,7 +18,12 @@ const Purchases = () => {
       <div className="container-lg">
         <h2 className="fs-4 mb-5">My purchases</h2>
         {purchases?.map(purchase => (
-          <div key={purchase?.id} className="card mb-3">
+          <div
+            key={purchase?.id}
+            role="button"
+            className="card mb-3"
+            onClick={() => navigate(`/products/${product.id}`)}
+          >
             <div className="row g-0">
               <div className="col-4 col-md-2 text-center d-flex flex-column justify-content-center">
                 <img
