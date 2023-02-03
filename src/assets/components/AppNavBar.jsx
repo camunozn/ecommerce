@@ -1,12 +1,15 @@
 import React from 'react';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { setShowCart } from '../../store/slices/showCart.slice';
 
 const AppNavBar = () => {
-  const [showNavbar, setShowNavbar] = useState(false);
   const token = localStorage.getItem('token');
-
+  const [showNavbar, setShowNavbar] = useState(false);
   const { pathname } = useLocation();
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   return (
@@ -32,6 +35,7 @@ const AppNavBar = () => {
                   className={`nav-link ${pathname === '/' ? 'active' : ''}`}
                   role="button"
                   onClick={() => {
+                    setShowNavbar(false);
                     navigate('/');
                   }}
                 >
@@ -41,7 +45,14 @@ const AppNavBar = () => {
             </ul>
             <ul className={`navbar-nav d-flex ${token ? '' : 'd-none'}`}>
               <li className="nav-item me-4">
-                <a className="nav-link" role="button">
+                <a
+                  className="nav-link"
+                  role="button"
+                  onClick={() => {
+                    setShowNavbar(false);
+                    dispatch(setShowCart(true));
+                  }}
+                >
                   {showNavbar ? 'My cart' : <i className="fa-solid fa-cart-shopping"></i>}
                 </a>
               </li>
@@ -50,6 +61,7 @@ const AppNavBar = () => {
                   className={`nav-link ${pathname === '/purchases' ? 'active' : ''}`}
                   role="button"
                   onClick={() => {
+                    setShowNavbar(false);
                     navigate('/purchases');
                   }}
                 >
@@ -61,6 +73,7 @@ const AppNavBar = () => {
                   className={`nav-link ${pathname === '/user' ? 'active' : ''}`}
                   role="button"
                   onClick={() => {
+                    setShowNavbar(false);
                     navigate('/user');
                   }}
                 >
@@ -74,11 +87,12 @@ const AppNavBar = () => {
                   className={`nav-link ${pathname === '/login' ? 'active' : ''}`}
                   role="button"
                   onClick={() => {
+                    setShowNavbar(false);
                     if (token) localStorage.setItem('token', '');
                     navigate('/login');
                   }}
                 >
-                  {token ? 'Logout' : 'Login'}
+                  {token ? 'Log out' : 'Log in'}
                 </a>
               </li>
             </ul>

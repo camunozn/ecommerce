@@ -17,20 +17,21 @@ const Login = () => {
       .post('https://e-commerce-api-v2.academlo.tech/api/v1/users/login', data)
       .then(res => {
         localStorage.setItem('token', res.data.token);
-        navigate('/user');
+        dispatch(setAlertData({ alertType: 'success', alertMessage: 'Logged in successfully.' }));
+        dispatch(setShowAlert(true));
+        navigate('/');
       })
       .catch(err => {
-        if (err.response.status === 401) {
-          dispatch(
-            setAlertData({
-              alertType: 'error',
-              alertMessage: 'Wrong email or password. Try again.',
-            })
-          );
-          dispatch(setShowAlert(true));
-        } else {
-          console.error(err);
-        }
+        const message =
+          err.response.status === 401 ? 'Wrong email or password. Try again.' : err.message;
+        dispatch(setAlertData({ alertType: 'error', alertMessage: message }));
+        dispatch(setShowAlert(true));
+        console.error(err);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          dispatch(setShowAlert(false));
+        }, 2000);
       });
   };
 

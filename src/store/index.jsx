@@ -6,15 +6,19 @@ import isLoadingSlice from './slices/isLoading.slice';
 import loggedUserSlice from './slices/loggedUser.slice';
 import showAlertSlice from './slices/showAlert.slice';
 import alertDataSlice from './slices/alertData.slice';
+import cartSlice from './slices/cart.slice';
+import showCartSlice from './slices/showCart.slice';
 
 export default configureStore({
   reducer: {
     products: productsSlice,
     purchases: purchasesSlice,
+    cart: cartSlice,
     categories: categoriesSlice,
     loggedUser: loggedUserSlice,
-    isLoading: isLoadingSlice,
-    showAlert: showAlertSlice,
     alertData: alertDataSlice,
+    showAlert: showAlertSlice,
+    showCart: showCartSlice,
+    isLoading: isLoadingSlice,
   },
 });

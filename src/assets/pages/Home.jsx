@@ -6,13 +6,17 @@ import { getCategoriesThunk } from '../../store/slices/categories.slice';
 import SideBar from '../components/SideBar';
 import SearchBar from '../components/SearchBar';
 import ProductsList from '../components/ProductsList';
+import { getCartThunk } from '../../store/slices/cart.slice';
 
 const Home = () => {
+  const token = localStorage.getItem('token');
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProductsThunk());
     dispatch(getCategoriesThunk());
+    if (token) dispatch(getCartThunk());
   }, []);
 
   return (

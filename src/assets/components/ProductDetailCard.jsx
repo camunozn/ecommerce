@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addToCartThunk } from '../../store/slices/cart.slice';
 
 const ProductDetailCard = ({ product }) => {
   const [productQty, setProductQyt] = useState(1);
 
+  const dispatch = useDispatch();
+
   return (
-    <div className="product-showcase">
+    <div className="product-detail">
       {/* PRODUCT DETAILS */}
       <div className="d-flex flex-column justify-content-between p-5">
         <div className="mb-3">
@@ -44,7 +48,13 @@ const ProductDetailCard = ({ product }) => {
             </div>
           </div>
         </div>
-        <button type="button" className="btn btn-primary w-100">
+        <button
+          type="button"
+          className="btn btn-primary w-100"
+          onClick={() => {
+            dispatch(addToCartThunk({ productId: product?.id, quantity: productQty }));
+          }}
+        >
           Add to cart
         </button>
       </div>

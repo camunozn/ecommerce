@@ -12,10 +12,12 @@ import User from './assets/pages/User';
 import Purchases from './assets/pages/Purchases';
 import ScrollToTop from './assets/components/ScrollToTop';
 import AlertModal from './assets/components/AlertModal';
+import Cart from './assets/components/Cart';
 
 function App() {
   const isLoading = useSelector(state => state.isLoading);
   const showAlert = useSelector(state => state.showAlert);
+  const showCart = useSelector(state => state.showCart);
 
   return (
     <HashRouter>
@@ -24,6 +26,7 @@ function App() {
         <AppNavBar />
         {isLoading && <LoadingScreen />}
         {showAlert && <AlertModal />}
+        {showCart && <Cart />}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
