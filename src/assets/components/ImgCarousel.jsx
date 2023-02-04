@@ -21,7 +21,7 @@ const ImgCarousel = ({ product }) => {
             {product.images?.map((image, i) => (
               <div
                 key={image?.id}
-                className={`carousel-item h-100 ${i === imgIndex ? 'active d-flex h-100' : ''}`}
+                className={`carousel-item d-flex h-100 ${i === imgIndex ? 'active' : ''}`}
               >
                 <img
                   src={image?.url}

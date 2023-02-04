@@ -1,3 +1,7 @@
+/**********************/
+/* GENERAL COMPONENTS */
+/**********************/
+
 .overlay {
   position: fixed;
   top: 0;
@@ -11,14 +15,6 @@
   z-index: 100;
 }
 
-.alert--success {
-  color: lightgreen;
-}
-
-.alert--error {
-  color: lightcoral;
-}
-
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -29,4 +25,30 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type='number'] {
   -moz-appearance: textfield;
+}
+
+/**********************/
+/* ALERT COMPONENT */
+/**********************/
+.alert--success {
+  color: lightgreen;
+}
+
+.alert--error {
+  color: lightcoral;
+}
+
+/**********************/
+/* CAROUSEL COMPONENT */
+/**********************/
+.carousel .carousel-inner .carousel-item {
+  display: block;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity ease-in-out 0.6s;
+}
+
+.carousel-item.active {
+  z-index: 1 !important;
+  opacity: 1 !important;
 }
